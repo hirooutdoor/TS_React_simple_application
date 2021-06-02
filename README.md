@@ -1,2 +1,2 @@
-# TS_React_simple_application
+# ts_react_simpleapp
 Created with CodeSandbox
