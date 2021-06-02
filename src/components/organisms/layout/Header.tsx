@@ -1,40 +1,62 @@
-import { Box, Flex, Heading, Link, IconButton } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Link,
+  IconButton,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerBody,
+  Button
+} from "@chakra-ui/react";
 import { memo, VFC } from "react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
 export const Header: VFC = memo(() => {
   return (
-    <Flex
-      as="nav"
-      bg="teal.500"
-      color="gray.50"
-      align="center"
-      justify="space-between"
-      padding={{ base: 3, md: 5 }}
-    >
-      <Flex align="center" as="a" mr={8} _hover={{ cursor: "pointer" }}>
-        <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>
-          User admin app
-        </Heading>
-      </Flex>
+    <>
       <Flex
+        as="nav"
+        bg="teal.500"
+        color="gray.50"
         align="center"
-        fontSize="sm"
-        flexGrow={2}
-        display={{ base: "none", md: "flex" }}
+        justify="space-between"
+        padding={{ base: 3, md: 5 }}
       >
-        <Box pr={4}>
-          <Link>Users</Link>
-        </Box>
-        <Link>Settings</Link>
+        <Flex align="center" as="a" mr={8} _hover={{ cursor: "pointer" }}>
+          <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>
+            User admin app
+          </Heading>
+        </Flex>
+        <Flex
+          align="center"
+          fontSize="sm"
+          flexGrow={2}
+          display={{ base: "none", md: "flex" }}
+        >
+          <Box pr={4}>
+            <Link>Users</Link>
+          </Box>
+          <Link>Settings</Link>
+        </Flex>
+        <IconButton
+          aria-label="menu button"
+          icon={<HamburgerIcon />}
+          size="md"
+          variant="unstyled"
+          display={{ base: "block", md: "none" }}
+        />
       </Flex>
-      <IconButton
-        aria-label="menu button"
-        icon={<HamburgerIcon />}
-        size="md"
-        variant="unstyled"
-        display={{ base: "block", md: "none" }}
-      />
-    </Flex>
+      <Drawer>
+        <DrawerOverlay>
+          <DrawerContent>
+            <DrawerBody>
+              <Button></Button>
+            </DrawerBody>
+          </DrawerContent>
+        </DrawerOverlay>
+      </Drawer>
+    </>
   );
 });
