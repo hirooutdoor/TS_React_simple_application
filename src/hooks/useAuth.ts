@@ -5,9 +5,11 @@ import { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { User } from "../types/api/user";
+import { useMessage } from "./useMessage";
 
 export const useAuth = () => {
   const history = useHistory();
+  const { showMessage } = useMessage();
 
   const [loading, setLoading] = useState(false);
 
@@ -19,15 +21,18 @@ export const useAuth = () => {
         .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then((res) => {
           if (res.data) {
+            showMessage({ title: "Successfuly loged in!", status: "success" });
             history.push("/home");
           } else {
-            alert("Can't find the user.");
+            showMessage({ title: "Can't find the user.", status: "error" });
           }
         })
-        .catch(() => alert("Can't login."))
+        .catch(() =>
+          showMessage({ title: "Failed to login.", status: "error" })
+        )
         .finally(() => setLoading(false));
     },
-    [history]
+    [history, showMessage]
   );
   return { login, loading };
 };
