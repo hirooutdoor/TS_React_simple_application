@@ -1,17 +1,23 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  Link,
-  useDisclosure
-} from "@chakra-ui/react";
-import { memo, VFC } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+
+import { Box, Flex, Heading, Link, useDisclosure } from "@chakra-ui/react";
+import { memo, useCallback, VFC } from "react";
+import { useHistory } from "react-router-dom";
 
 import { MenuIconButton } from "../../atoms/button/MenuIconButton";
 import { MenuDrawer } from "../../molecules/MenuDrawer";
 
 export const Header: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const history = useHistory();
+
+  const onClickHome = useCallback(() => history.push("/home"), []);
+  const onClickUserManagement = useCallback(
+    () => history.push("/home/user_management"),
+    []
+  );
+  const onClickSetting = useCallback(() => history.push("/home/setting"), []);
+
   return (
     <>
       <Flex
@@ -22,7 +28,13 @@ export const Header: VFC = memo(() => {
         justify="space-between"
         padding={{ base: 3, md: 5 }}
       >
-        <Flex align="center" as="a" mr={8} _hover={{ cursor: "pointer" }}>
+        <Flex
+          align="center"
+          as="a"
+          mr={8}
+          _hover={{ cursor: "pointer" }}
+          onClick={onClickHome}
+        >
           <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>
             User admin app
           </Heading>
@@ -34,9 +46,9 @@ export const Header: VFC = memo(() => {
           display={{ base: "none", md: "flex" }}
         >
           <Box pr={4}>
-            <Link>Users</Link>
+            <Link onClick={onClickUserManagement}>Users</Link>
           </Box>
-          <Link>Settings</Link>
+          <Link onClick={onClickSetting}>Settings</Link>
         </Flex>
         <MenuIconButton onOpen={onOpen} />
       </Flex>
