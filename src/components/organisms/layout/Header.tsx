@@ -3,16 +3,12 @@ import {
   Flex,
   Heading,
   Link,
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerBody,
-  Button,
   useDisclosure
 } from "@chakra-ui/react";
 import { memo, VFC } from "react";
 
 import { MenuIconButton } from "../../atoms/button/MenuIconButton";
+import { MenuDrawer } from "../../molecules/MenuDrawer";
 
 export const Header: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -44,17 +40,7 @@ export const Header: VFC = memo(() => {
         </Flex>
         <MenuIconButton onOpen={onOpen} />
       </Flex>
-      <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen}>
-        <DrawerOverlay>
-          <DrawerContent>
-            <DrawerBody p={0} bg="gray.100">
-              <Button w="100%">TOP</Button>
-              <Button w="100%">Users</Button>
-              <Button w="100%">Settings</Button>
-            </DrawerBody>
-          </DrawerContent>
-        </DrawerOverlay>
-      </Drawer>
+      <MenuDrawer onClose={onClose} isOpen={isOpen} />
     </>
   );
 });
