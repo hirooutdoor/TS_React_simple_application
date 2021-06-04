@@ -7,8 +7,10 @@ import {
 } from "react";
 import { User } from "../types/api/user";
 
+type LoginUser = User & { isAdmin: boolean };
+
 export type LoginUserConetxtType = {
-  loginUser: (User & { isAdmin: boolean }) | null;
+  loginUser: LoginUser | null;
   setLoginUser: Dispatch<SetStateAction<User | null>>;
 };
 
@@ -18,7 +20,7 @@ export const LoginUserContext = createContext<LoginUserConetxtType>(
 
 export const LoginUserProvider = (props: { children: ReactNode }) => {
   const { children } = props;
-  const [loginUser, setLoginUser] = useState<User | null>(null);
+  const [loginUser, setLoginUser] = useState<LoginUser | null>(null);
 
   return (
     <LoginUserContext.Provider value={{ loginUser, setLoginUser }}>
