@@ -10,7 +10,7 @@ import {
   Wrap,
   WrapItem
 } from "@chakra-ui/react";
-import { memo, useEffect, VFC } from "react";
+import { memo, useCallback, useEffect, VFC } from "react";
 
 import { UserCard } from "../organisms/user/UserCard";
 import { useAllUsers } from "../../hooks/useAllUsers";
@@ -22,7 +22,7 @@ export const UserManagement: VFC = memo(() => {
 
   useEffect(() => getUsers(), []);
 
-  const onClickUser = () => onOpen();
+  const onClickUser = useCallback(() => onOpen(), []);
 
   return (
     <>
