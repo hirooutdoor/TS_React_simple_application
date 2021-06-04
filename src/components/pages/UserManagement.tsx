@@ -20,7 +20,10 @@ export const UserManagement: VFC = memo(() => {
 
   useEffect(() => getUsers(), []);
 
-  const onClickUser = useCallback(() => onOpen(), []);
+  const onClickUser = useCallback((id: number) => {
+    //console.log(id);
+    onOpen();
+  }, []);
 
   return (
     <>
@@ -37,6 +40,7 @@ export const UserManagement: VFC = memo(() => {
               mx="auto"
             >
               <UserCard
+                id={user.id}
                 imageUrl="https://source.unsplash.com/random"
                 userName={user.username}
                 fullName={user.name}
@@ -46,7 +50,7 @@ export const UserManagement: VFC = memo(() => {
           ))}
         </Wrap>
       )}
-      <UserDetailModal isOpen={isOpen} onClose={onClose}/>
+      <UserDetailModal isOpen={isOpen} onClose={onClose} />
     </>
   );
 });
