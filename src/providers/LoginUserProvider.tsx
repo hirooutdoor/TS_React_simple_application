@@ -8,7 +8,7 @@ import {
 import { User } from "../types/api/user";
 
 export type LoginUserConetxtType = {
-  loginUser: User | null;
+  loginUser: (User & { isAdmin: boolean }) | null;
   setLoginUser: Dispatch<SetStateAction<User | null>>;
 };
 
