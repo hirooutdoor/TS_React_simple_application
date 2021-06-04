@@ -1,7 +1,7 @@
 // /home 配下のrouterを設定していく
 
 import { Home } from "../components/pages/Home";
-import { UserManagement } from "../components/pages/UserManageMent";
+import { UserManagement } from "../components/pages/UserManagement";
 import { Setting } from "../components/pages/Setting";
 import { Page404 } from "../components/pages/Page404";
 
