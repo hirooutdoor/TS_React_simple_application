@@ -25,9 +25,7 @@ type Props = {
 export const UserDetailModal: VFC<Props> = memo((props) => {
   const { user, isOpen, isAdmin = false, onClose } = props;
 
-  const onClickUpdate = () => {
-  
-  };
+  const onClickUpdate = () => {};
 
   return (
     <Modal
@@ -44,19 +42,19 @@ export const UserDetailModal: VFC<Props> = memo((props) => {
             <Stack spacing={4}>
               <FormControl>
                 <FormLabel>Name</FormLabel>
-                <Input value={user?.username} isReadOnly />
+                <Input value={user?.username} isReadOnly={!isAdmin} />
               </FormControl>
               <FormControl>
                 <FormLabel>Full Name</FormLabel>
-                <Input value={user?.name} isReadOnly />
+                <Input value={user?.name} isReadOnly={!isAdmin} />
               </FormControl>
               <FormControl>
                 <FormLabel>Mail</FormLabel>
-                <Input value={user?.email} isReadOnly />
+                <Input value={user?.email} isReadOnly={!isAdmin} />
               </FormControl>
               <FormControl>
                 <FormLabel>TEL</FormLabel>
-                <Input value={user?.phone} isReadOnly />
+                <Input value={user?.phone} isReadOnly={!isAdmin} />
               </FormControl>
               {isAdmin && (
                 <ModalFooter>
