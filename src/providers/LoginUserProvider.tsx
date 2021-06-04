@@ -5,14 +5,14 @@ import {
   SetStateAction,
   useState
 } from "react";
-import { User } from "../../types/api/user";
+import { User } from "../types/api/user";
 
-type LoginUserConetxtType = {
+export type LoginUserConetxtType = {
   loginUser: User | null;
   setLoginUser: Dispatch<SetStateAction<User | null>>;
 };
 
-const LoginUserContext = createContext<LoginUserConetxtType>(
+export const LoginUserContext = createContext<LoginUserConetxtType>(
   {} as LoginUserConetxtType
 );
 
