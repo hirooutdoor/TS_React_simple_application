@@ -11,7 +11,7 @@ import {
   ModalOverlay,
   Stack
 } from "@chakra-ui/react";
-import { memo, useEffect, useState, VFC } from "react";
+import { ChangeEvent, memo, useEffect, useState, VFC } from "react";
 import { User } from "../../../types/api/user";
 import { PrimaryButton } from "../../atoms/button/PrimaryButton";
 
@@ -37,6 +37,15 @@ export const UserDetailModal: VFC<Props> = memo((props) => {
     setPhone(user?.phone ?? "");
   }, [user]);
 
+  const onChangeUsername = (e: ChangeEvent<HTMLInputElement>) =>
+    setUsername(e.target.value);
+  const onChangeName = (e: ChangeEvent<HTMLInputElement>) =>
+    setName(e.target.value);
+  const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) =>
+    setEmail(e.target.value);
+  const onChangePhone = (e: ChangeEvent<HTMLInputElement>) =>
+    setPhone(e.target.value);
+
   const onClickUpdate = () => {};
 
   return (
@@ -54,19 +63,35 @@ export const UserDetailModal: VFC<Props> = memo((props) => {
             <Stack spacing={4}>
               <FormControl>
                 <FormLabel>Name</FormLabel>
-                <Input value={username} isReadOnly={!isAdmin} />
+                <Input
+                  value={username}
+                  onChange={onChangeUsername}
+                  isReadOnly={!isAdmin}
+                />
               </FormControl>
               <FormControl>
                 <FormLabel>Full Name</FormLabel>
-                <Input value={name} isReadOnly={!isAdmin} />
+                <Input
+                  value={name}
+                  onChange={onChangeName}
+                  isReadOnly={!isAdmin}
+                />
               </FormControl>
               <FormControl>
                 <FormLabel>Mail</FormLabel>
-                <Input value={email} isReadOnly={!isAdmin} />
+                <Input
+                  value={email}
+                  onChange={onChangeEmail}
+                  isReadOnly={!isAdmin}
+                />
               </FormControl>
               <FormControl>
                 <FormLabel>TEL</FormLabel>
-                <Input value={phone} isReadOnly={!isAdmin} />
+                <Input
+                  value={phone}
+                  onChange={onChangePhone}
+                  isReadOnly={!isAdmin}
+                />
               </FormControl>
               {isAdmin && (
                 <ModalFooter>
