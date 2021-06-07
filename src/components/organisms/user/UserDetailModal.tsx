@@ -27,7 +27,7 @@ export const UserDetailModal: VFC<Props> = memo((props) => {
 
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
-  const [email, setEmail] = useState( "");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
   useEffect(() => {
@@ -46,9 +46,7 @@ export const UserDetailModal: VFC<Props> = memo((props) => {
   const onChangePhone = (e: ChangeEvent<HTMLInputElement>) =>
     setPhone(e.target.value);
 
-  const onClickUpdate = () => {
-  // onchangeでstateを持たせて変更を加える
-  };
+  const onClickUpdate = () => {};
 
   return (
     <Modal
