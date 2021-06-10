@@ -46,9 +46,7 @@ export const UserDetailModal: VFC<Props> = memo((props) => {
   const onChangePhone = (e: ChangeEvent<HTMLInputElement>) =>
     setPhone(e.target.value);
 
-  const onClickUpdate = () => {
-    //weite code here
-  };
+  const onClickUpdate = () => {};
 
   return (
     <Modal
